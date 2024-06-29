@@ -87,3 +87,5 @@ class AccountMoveLine(models.Model):
                     fiscal_position=line.move_id.fiscal_position_id,
                     product_uom=line.product_uom_id,
                 )
+
+
