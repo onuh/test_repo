@@ -1,37 +1,13 @@
-name: Python Syntax Code Quality Check Workflow
-
-on:
-  push:
-    branches:
-      - main
-
+name: first-workflow
+on: [push]
 jobs:
-  pylint-check:
+  check-python-version:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.7'
-
-    - name: Create virtual environment
-      run: python -m venv venv
-      working-directory: ${{ github.workspace }}
-
-    - name: Activate virtual environment and install dependencies
-      run: |
-        source venv/bin/activate
-        python -m pip install --upgrade pip
-        deactivate
-      working-directory: ${{ github.workspace }}
-
-    - name: Analyze code with Pylint
-      run: |
-        source venv/bin/activate
-        pylint $(git ls-files '*.py')
-        deactivate
-      working-directory: ${{ github.workspace }} 
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.6.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.6.9
+      - name: Check Version
+        run: python --version
