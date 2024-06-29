@@ -20,5 +20,4 @@ jobs:
         pip install pylint
     - name: Analysing the code with pylint
       run: |
-        pylint --disable=W,C,R,E0401 == --errors-only --disable=E0401
         pylint $(git ls-files  '*.py')
