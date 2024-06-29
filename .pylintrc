@@ -1,5 +1,3 @@
 [MESSAGES CONTROL]
 
-disable=missing-module-docstring,
-        missing-function-docstring,
-        missing-class-docstring
+disable=missing-module-docstring,missing-function-docstring,missing-class-docstring,pointless-statement,import-error,protected-access,too-few-public-methods
