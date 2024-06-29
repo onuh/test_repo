@@ -13,7 +13,8 @@ class AccountMoveLine(models.Model):
     def recompute_values(self):
         # add this line to help us control the price_total field edit
         self.uom_category_name = self.product_uom_id.category_id.name
-        if self.uom_category_name and self.quantity < 1 and self.uom_category_name.lower() == 'weight':
+        if (self.uom_category_name and
+                self.quantity < 1 and self.uom_category_name.lower() == 'weight'):
             raise UserError(_('Sorry, Please first supply a value for Quantity'))
 
     @api.depends('quantity', 'discount', 'price_unit', 'tax_ids', 'currency_id')
@@ -86,4 +87,3 @@ class AccountMoveLine(models.Model):
                     fiscal_position=line.move_id.fiscal_position_id,
                     product_uom=line.product_uom_id,
                 )
-
